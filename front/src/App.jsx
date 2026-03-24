@@ -11,11 +11,12 @@ function App() {
         setInputValue(event.target.value);
     };
 
-    const handleButtonClick = () => {
-        const caption = generateCaption(inputValue); // Generate caption based on the input URL
+    async function handleButtonClick() {
         setImageUrl(inputValue);
+        setCaption("Generating caption..."); // Show loading message while generating caption
+        const caption = await generateCaption(inputValue); // Generate caption based on the input URL
         setCaption(caption); // Update the caption based on the generated caption
-    };
+    }
 
     return (
         <div className="container">

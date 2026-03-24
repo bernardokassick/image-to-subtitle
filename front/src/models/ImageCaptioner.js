@@ -18,7 +18,7 @@ export default class ImageCaptioner {
     static async generateCaption(imageUrl) {
         return this.getCaptioner().then((captioner) => {
             console.log(captioner);
-            return captioner(imageUrl).then((result) => {
+            return captioner(imageUrl, { do_sample: true }).then((result) => {
                 console.log("Caption gerada:", result);
                 return result[0].generated_text;
             });
